@@ -1,0 +1,325 @@
+<html><head><base href="https://empreendimentos.mc-engenharia.com/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M&C Engenharia - Construindo Sonhos, Projetando Futuros</title>
+<style>
+  body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+  }
+  header {
+    background-image: url('cabecalho.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .header-text {
+    text-align: center;
+    color: white;
+    z-index: 1;
+  }
+  .header-text h1 {
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+  .header-text p {
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+  }
+  nav {
+    background-color: #2e7d9e;
+    padding: 0.7rem;
+  }
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+  nav ul li {
+    margin: 0 1.2rem;
+  }
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  nav ul li a:hover {
+    color: #ffd700;
+  }
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  .gallery img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  .gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  footer {
+    background-color: #1a5f7a;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+  .whatsapp-button {
+    background-color: #0066CC;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 1.5rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  .whatsapp-button:hover {
+    background-color: #0052A3;
+    transform: translateY(-2px);
+  }
+  h1, h2 {
+    color: #1a5f7a;
+  }
+  section {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  .simulation-banner {
+    background-color: #0066CC;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+    display: block;
+  }
+  .simulation-banner:hover {
+    background-color: #0052A3;
+    transform: scale(1.02);
+  }
+  .simulation-banner span {
+    color: #ff8800;
+  }
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+  }
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 900px;
+    max-height: 80%;
+    object-fit: contain;
+  }
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    margin-top: 2rem;
+  }
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="header-text">
+      <h1>M&C Engenharia</h1>
+      <p>Construindo Sonhos, Projetando Futuros</p>
+    </div>
+  </header>
+  
+  <nav>
+    <ul>
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="https://wa.me/5517997090809?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20projetos%20da%20M%26C%20Engenharia" target="_blank">Projetos</a></li>
+      <li><a href="#sobre">Sobre Nós</a></li>
+      <li><a href="https://wa.me/5517997090809?text=Olá,%20gostaria%20de%20entrar%20em%20contato%20com%20a%20M%26C%20Engenharia" target="_blank">Contato</a></li>
+    </ul>
+  </nav>
+  
+  <main>
+    <section id="inicio">
+      <h2>Bem-vindo à M&C Engenharia</h2>
+      <p>Venha conhecer como trabalhamos e visite alguma de nossas obras com acompanhamento técnico. Venha transformar seu sonho em realidade!</p>
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </section>
+    
+    <section id="projetos">
+      <a href="https://wa.me/5517997090809?text=Olá,%20gostaria%20de%20fazer%20um%20Projeto%20Para%20Construção" class="simulation-banner" target="_blank">
+        <span>Faça Já Uma</span> Simulação de Financiamento
+      </a>
+      <h2>Nossos Projetos</h2>
+      <p>Explore nossa galeria de projetos inovadores e inspiradores:</p>
+      <div class="gallery">
+        <img src="https://www.dropbox.com/scl/fi/kgbceq85igq2c3db8q89m/casa-12.jpeg?rlkey=jiemz05lnz6oq0nvxjph3msz7&st=ecg6xfk7&dl=1" alt="Casa moderna minimalista com linhas retas e grandes janelas" width="250" height="200">
+        <img src="https://www.dropbox.com/scl/fi/z8jy48dzbxi9gfud4h4rn/casa.jpeg?rlkey=cfn35gj1bg1fwf80od3h97vrq&st=hyy6x0s3&dl=1" alt="Casa rústica contemporânea com mistura de madeira e concreto" width="250" height="200">
+        <img src="https://www.dropbox.com/scl/fi/mu4kbilh3ct5aw9hl4dqi/casa-1.jpeg?rlkey=tvvtnt8egl3drwacc1wwbturi&st=cpcr1yhs&dl=1" alt="Mansão luxuosa com piscina infinita e vista para o mar" width="250" height="200">
+        <img src="https://www.dropbox.com/scl/fi/vx518icbbabvow6fexrlf/casa-2.jpeg?rlkey=r6tutw986t2r6j531scy18ebo&st=dv14bvta&dl=1" alt="Casa ecológica com telhado verde e painéis solares" width="250" height="200">
+        <img src="https://www.dropbox.com/scl/fi/114tvsmphw44d7mrlom0j/casa-3.jpeg?rlkey=bu8u95zgrfluaxavsw2yli8td&st=zxf93xg5&dl=1" alt="Residência inteligente com sistema de automação integrado" width="250" height="200">
+        <img src="https://www.dropbox.com/scl/fi/mb29o13umh0fl253peuxd/casa-4.jpeg?rlkey=kcwhs5cy437kw4seohovefcnh&st=4ggfdyl4&dl=1" alt="Casa de campo moderna com amplas áreas de convivência" width="250" height="200">
+        <img src="https://www.dropbox.com/scl/fi/z6c54yxcpf93z3wz2bnuq/casa-5.jpeg?rlkey=6g2foitz9gaf9iio2znu5n6ac&st=76o64sk3&dl=1" alt="Apartamento duplex com mezanino e decoração contemporânea" width="250" height="200">
+        <img src="https://www.dropbox.com/scl/fi/f7dzeghw8zc4lec5rj1kw/casa-6.jpeg?rlkey=a1ff3jdkvqxo43cn2mgxsf21a&st=zxdfbwl1&dl=1" alt="Casa de praia sustentável com materiais reciclados" width="250" height="200">
+        <img src="residencia-urbana-compacta.jpg" alt="Residência urbana compacta com aproveitamento máximo de espaço" width="250" height="200">
+        <img src="casa-arvore-luxo.jpg" alt="Casa na árvore de luxo para ecoturismo" width="250" height="200">
+        <img src="loft-industrial.jpg" alt="Loft industrial com pé direito alto e decoração vintage" width="250" height="200">
+        <img src="casa-flutuante.jpg" alt="Casa flutuante moderna em lago artificial" width="250" height="200">
+        <img src="residencia-acessivel.jpg" alt="Residência totalmente acessível para pessoas com mobilidade reduzida" width="250" height="200">
+        <img src="casa-container.jpg" alt="Casa moderna feita com containers reciclados" width="250" height="200">
+        <img src="vila-residencial.jpg" alt="Vila residencial com casas geminadas e área comum" width="250" height="200">
+        <img src="casa-passiva.jpg" alt="Casa passiva com eficiência energética máxima" width="250" height="200">
+        <img src="residencia-vidro.jpg" alt="Residência com fachada de vidro e vista panorâmica" width="250" height="200">
+        <img src="casa-subterranea.jpg" alt="Casa subterrânea com design inovador e sustentável" width="250" height="200">
+        <img src="chale-moderno.jpg" alt="Chalé moderno com telhado inclinado e grandes janelas" width="250" height="200">
+        <img src="casa-prototipo-futuro.jpg" alt="Casa protótipo do futuro com tecnologias inovadoras" width="250" height="200">
+        <img src="residencia-mediterranea.jpg" alt="Residência de estilo mediterrâneo com pátio interno" width="250" height="200">
+        <img src="casa-modular-expansivel.jpg" alt="Casa modular expansível com módulos personalizáveis" width="250" height="200">
+        <img src="sobrado-contemporaneo.jpg" alt="Sobrado contemporâneo com fachada assimétrica" width="250" height="200">
+        <img src="tiny-house-luxo.jpg" alt="Tiny house de luxo com design compacto e funcional" width="250" height="200">
+        <img src="casa-bioclimatica.jpg" alt="Casa bioclimática adaptada ao clima local" width="250" height="200">
+        <img src="residencia-moderna.jpg" alt="Residência moderna com linhas retas, grandes janelas e integração com a natureza" width="250" height="200">
+        <img src="casa-sustentavel-madeira.jpg" alt="Casa sustentável construída principalmente com madeira certificada" width="250" height="200">
+        <img src="apartamento-cobertura-luxo.jpg" alt="Apartamento de cobertura luxuoso com terraço panorâmico e piscina privativa" width="250" height="200">
+      </div>
+      <a href="https://wa.me/5517997090809?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20projetos%20da%20M%26C%20Engenharia" class="whatsapp-button" target="_blank">Venha Já Realizar Seu Sonho da Casa Própria</a>
+    </section>
+    
+    <section id="sobre">
+      <h2>Sobre Nós</h2>
+      <p>A M&C Engenharia é liderada pelo engenheiro Marcos Procópio, um verdadeiro mestre construtor. Reconhecido por sua excelência técnica e visão inovadora, Marcos transformou a M&C em uma referência de qualidade e confiabilidade no mercado de construção civil.</p>
+    </section>
+    
+    <section id="contato">
+      <h2>Entre em Contato</h2>
+      <p>Estamos prontos para transformar suas ideias em realidade. Entre em contato para uma consultoria personalizada e descubra como podemos colaborar em seu próximo projeto.</p>
+      <p>Telefone: (17) 99709-0809</p>
+      <p>Email: mcengenharianh@gmail.com</p>
+      <p>Endereço: Campos Sales, 757, Novo Horizonte SP</p>
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; 2023 M&C Engenharia. Todos os direitos reservados.</p>
+  </footer>
+
+  <div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('nav a:not([href^="https://wa.me"])');
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+          
+          window.scrollTo({
+            top: targetElement.offsetTop - 70,
+            behavior: 'smooth'
+          });
+        });
+      });
+
+      // Código para o zoom das imagens
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("modalImage");
+      const closeBtn = document.getElementsByClassName("close")[0];
+      const galleryImages = document.querySelectorAll('.gallery img');
+
+      galleryImages.forEach(img => {
+        img.onclick = function() {
+          modal.style.display = "block";
+          modalImg.src = this.src;
+          modalImg.alt = this.alt;
+        }
+      });
+
+      closeBtn.onclick = function() {
+        modal.style.display = "none";
+      }
+
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+    });
+  </script>
+</body></html>
